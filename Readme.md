@@ -5,7 +5,7 @@ In order to run Umbraco locally you will need to [install latest supported .NET 
 With dotnet installed, run the following commands in your terminal application of choice:
 
 ```
-cd src/UmbracoProject
+cd src/CrossCloudLoadBalancing.Web
 dotnet build
 dotnet run
 ```
@@ -30,9 +30,9 @@ All you need to know to run your Umbraco Cloud project locally.
 
 Running Umbraco locally will automatically use SQLit out of the box and create a Umbraco.sqlite.db file in `~/umbraco/Data/Umbraco.sqlite.db`. The database schema will be automatically created, so it starts up ready for use.
 
-Browse to the URLs from the terminal output of `dotnet run` to see your Umbraco site or alternatively open the `src/UmbracoProject/UmbracoProject.csproj` file in Visual Studio or JetBrains Rider.
+Browse to the URLs from the terminal output of `dotnet run` to see your Umbraco site or alternatively open the `src/CrossCloudLoadBalancing.Web/CrossCloudLoadBalancing.Web.csproj` file in Visual Studio or JetBrains Rider.
 
-Now you can type `dotnet run` from within the `src/UmbracoProject` folder to start the project. When running it for the first time, the database schema will be automatically created (with `"InstallUnattended": true` in appsettings.Development.json), so it starts up ready for use.
+Now you can type `dotnet run` from within the `src/CrossCloudLoadBalancing.Web` folder to start the project. When running it for the first time, the database schema will be automatically created (with `"InstallUnattended": true` in appsettings.Development.json), so it starts up ready for use.
 
 ## Project Structure
 
@@ -40,7 +40,7 @@ Below is an overview and description of the different parts contained within thi
 ```
 .
 ├── src
-│   └── UmbracoProject                              (Project folder - can be renamed)
+│   └── CrossCloudLoadBalancing.Web                              (Project folder - can be renamed)
 │       ├── Properties                              
 │       │   └──── launchSettings.json               (.NET launch settings file)
 │       ├── umbraco                                 
@@ -57,7 +57,7 @@ Below is an overview and description of the different parts contained within thi
 │       ├── appsettings.Production.json             (Cloud Production/Live specfic configuration)
 │       ├── Program.cs
 │       ├── umbraco-cloud.json                      (Umbraco Cloud specific configuration file - this should only be updated by Umbraco Cloud)
-│       └── UmbracoProject.csproj                   (The Project file used to build and run the Umbraco project - can be renamed)
+│       └── CrossCloudLoadBalancing.Web.csproj                   (The Project file used to build and run the Umbraco project - can be renamed)
 ├── .dockerignore                             
 ├── .editorconfig                           
 ├── .gitattributes                            
@@ -73,8 +73,8 @@ The file called `.umbraco` at the root of the project contains the following:
 
 ```
 [project]
-base = "src/UmbracoProject"
-csproj = "UmbracoProject.csproj"
+base = "src/CrossCloudLoadBalancing.Web"
+csproj = "CrossCloudLoadBalancing.Web.csproj"
 ```
 
 These two properties help inform us the folder location which contains the application and the second is the name of the .csproj file to build.
@@ -83,7 +83,7 @@ You can rename the folder and .csproj file to whatever you want, you may also wa
 
 In addition to this you are able to add additional Class Library projects that are referenced by the Umbraco application .csproj file, if you prefer to organise your code that way. 
 
-So you could rename `UmbracoProject.csproj` to `MyAwesomeProject.Web.csproj` and have one or more additional class library projects such as `MyAwesomeProject.Code.csproj`
+So you could rename `CrossCloudLoadBalancing.Web.csproj` to `MyAwesomeProject.Web.csproj` and have one or more additional class library projects such as `MyAwesomeProject.Code.csproj`
 
 ```
 [project]
@@ -119,7 +119,7 @@ dotnet sln add .\src\MyAwesomeProject.Web\MyAwesomeProject.Web.csproj
 dotnet add .\src\MyAwesomeProject.Web\MyAwesomeProject.Web.csproj reference .\src\MyAwesomeProject.Code\MyAwesomeProject.Code.csproj
 ```
 
-> Recommendation: When creating new projects along side the default UmbracoProject, we recommend that they are added to the src folder in the git repository.
+> Recommendation: When creating new projects along side the default CrossCloudLoadBalancing.Web, we recommend that they are added to the src folder in the git repository.
 
 # Documentation
 
