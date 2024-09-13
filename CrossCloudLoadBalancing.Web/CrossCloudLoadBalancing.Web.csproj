@@ -15,6 +15,8 @@
     <PackageReference Include="Umbraco.Deploy.Contrib" Version="14.1.0" />
     <PackageReference Include="Umbraco.Forms" Version="14.1.1" />
     <PackageReference Include="Umbraco.Forms.Deploy" Version="14.1.0" />
+    <PackageReference Include="Umbraco.StorageProviders.AzureBlob" Version="14.0.0" />
+    <PackageReference Include="Umbraco.StorageProviders.AzureBlob.ImageSharp" Version="14.0.0" />
     <PackageReference Include="UmbracoOutputCache" Version="14.0.0" />
   </ItemGroup>
 
