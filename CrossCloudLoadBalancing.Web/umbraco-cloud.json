@@ -6,6 +6,12 @@
       "Id": "9c46829a-217f-491f-9b8a-22f55a841345",
       "Workspaces": [
         {
+          "Id": "bc9f3093-9462-43a3-a6ee-c86633d596cc",
+          "Name": "Development",
+          "Type": "development",
+          "Url": "https://dev-cross-cloud-load-balancing.euwest01.umbraco.io"
+        },
+        {
           "Id": "4fad72c2-fdbd-49d7-aa93-7814c4eb75a5",
           "Name": "Live",
           "Type": "live",
