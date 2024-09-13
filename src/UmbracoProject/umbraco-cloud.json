@@ -1,7 +1,17 @@
 {
   "Deploy": {
     "Project": {
-      "Workspaces": []
+      "Name": "cross cloud load balancing",
+      "Alias": "cross-cloud-load-balancing",
+      "Id": "9c46829a-217f-491f-9b8a-22f55a841345",
+      "Workspaces": [
+        {
+          "Id": "4fad72c2-fdbd-49d7-aa93-7814c4eb75a5",
+          "Name": "Live",
+          "Type": "live",
+          "Url": "https://cross-cloud-load-balancing.euwest01.umbraco.io"
+        }
+      ]
     },
     "Settings": {}
   },
