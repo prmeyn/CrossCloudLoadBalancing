@@ -9,7 +9,7 @@ using Umbraco.Cms.Web.Website.Controllers;
 
 namespace CrossCloudLoadBalancing.Web
 {
-	public class MySurfaceController : SurfaceController
+	public sealed class MySurfaceController : SurfaceController
 	{
 		IHttpContextAccessor _httpContextAccessor;
 		private readonly string mySessionKey = "mySessionKey";
@@ -17,8 +17,6 @@ namespace CrossCloudLoadBalancing.Web
 		{
 			_httpContextAccessor = httpContextAccessor;
 		}
-
-		// ...
 
 		[HttpGet]
 		public IActionResult Index()
