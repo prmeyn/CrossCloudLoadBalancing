@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="NeoSmart.Caching.Sqlite.AspNetCore" Version="8.0.0" />
     <PackageReference Include="Umbraco.Cloud.Cms" Version="14.0.0" />
     <PackageReference Include="Umbraco.Cloud.Cms.PublicAccess" Version="14.0.0" />
     <PackageReference Include="Umbraco.Cloud.Identity.Cms" Version="14.0.1" />

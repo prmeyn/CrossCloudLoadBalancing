@@ -1,3 +1,4 @@
+using CrossCloudLoadBalancing.Web;
 using CrossCloudLoadBalancing.Web.ServerRoleAccessors;
 using Umbraco.Cms.Infrastructure.DependencyInjection;
 
@@ -13,16 +14,23 @@ if (builder.Environment.EnvironmentName.Equals("Subscriber"))
 {
     umbracoBuilder.SetServerRegistrar<SubscriberServerRoleAccessor>()
         .AddAzureBlobMediaFileSystem()
-        .AddAzureBlobImageSharpCache();
+        .AddAzureBlobImageSharpCache()
+        .AddSqlServerCache();
 }
 else if (builder.Environment.IsProduction())
 {
     umbracoBuilder.SetServerRegistrar<SchedulingPublisherServerRoleAccessor>();
 
 }
+else if (builder.Environment.EnvironmentName.Equals("Local"))
+{
+	umbracoBuilder.SetServerRegistrar<SingleServerRoleAccessor>()
+        .AddSqliteCache();
+}
 else
 {
-    umbracoBuilder.SetServerRegistrar<SingleServerRoleAccessor>();
+    umbracoBuilder.SetServerRegistrar<SingleServerRoleAccessor>()
+        .AddSqlServerCache(); 
 }
 
 umbracoBuilder.Build();
