@@ -3,7 +3,21 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Home>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @inject IServerRoleAccessor serverRoleAccessor
-@Model.Text
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor _httpContextAccessor
 
 <h1>@DateTime.UtcNow</h1>
+@Model.Text
 <h2>@serverRoleAccessor.CurrentServerRole</h2>
+@{
+	var mySessionKey = "mySessionKey";
+	var mySessionValue = _httpContextAccessor.HttpContext.Session.GetString(mySessionKey);
+
+	if (string.IsNullOrWhiteSpace(mySessionValue))
+	{
+		mySessionValue = Guid.NewGuid().ToString();
+		_httpContextAccessor.HttpContext.Session.SetString(mySessionKey, mySessionValue);
+
+	}
+}
+<h3>@($"The value of {mySessionKey} is {mySessionValue}, Refresh to check that it stays the same.")</h3>
