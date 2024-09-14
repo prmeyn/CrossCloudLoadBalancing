@@ -20,13 +20,11 @@ namespace CrossCloudLoadBalancing.Web
 
 		public static IUmbracoBuilder AddSqlServerCache(this IUmbracoBuilder builder)
 		{
-			string? dataDirectory = AppDomain.CurrentDomain.GetData(Constants.System.DataDirectoryName)?.ToString();
-
 			builder.Services.AddDistributedSqlServerCache(options =>
 			{
 				options.SchemaName = "dbo";
-				options.TableName = "sessionCache";
-				options.ConnectionString = builder.Config.GetConnectionString("umbracoDbDSN");
+				options.TableName = "SessionCache";
+				options.ConnectionString = builder.Config.GetConnectionString(Constants.System.UmbracoConnectionName);
 			});
 
 			return builder;
