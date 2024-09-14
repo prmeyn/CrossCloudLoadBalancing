@@ -29,8 +29,7 @@ else if (builder.Environment.EnvironmentName.Equals("Local"))
 }
 else
 {
-    umbracoBuilder.SetServerRegistrar<SingleServerRoleAccessor>()
-        .AddSqlServerCache(); 
+    umbracoBuilder.SetServerRegistrar<SingleServerRoleAccessor>(); 
 }
 
 umbracoBuilder.Build();
