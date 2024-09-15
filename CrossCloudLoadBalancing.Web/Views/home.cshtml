@@ -1,7 +1,17 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using CrossCloudLoadBalancing.Web
+@using Umbraco.Cms.Core.Sync
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Home>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@inject IServerRoleAccessor serverRoleAccessor
 
-@Model.Text
+
 
 <h1>@DateTime.UtcNow</h1>
+@Model.Text
+<h2>@serverRoleAccessor.CurrentServerRole</h2>
+
+@using (Html.BeginUmbracoForm<MySurfaceController>(nameof(MySurfaceController.Index), FormMethod.Get))
+{
+	<button type="submit">Get Session Value</button>
+}

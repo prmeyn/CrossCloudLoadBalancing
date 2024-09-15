@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="NeoSmart.Caching.Sqlite.AspNetCore" Version="8.0.0" />
     <PackageReference Include="Umbraco.Cloud.Cms" Version="14.0.0" />
     <PackageReference Include="Umbraco.Cloud.Cms.PublicAccess" Version="14.0.0" />
     <PackageReference Include="Umbraco.Cloud.Identity.Cms" Version="14.0.1" />
@@ -17,7 +18,11 @@
     <PackageReference Include="Umbraco.Forms.Deploy" Version="14.1.0" />
     <PackageReference Include="Umbraco.StorageProviders.AzureBlob" Version="14.0.0" />
     <PackageReference Include="Umbraco.StorageProviders.AzureBlob.ImageSharp" Version="14.0.0" />
+<<<<<<< HEAD
     <PackageReference Include="UmbracoOutputCache" Version="14.2.0" />
+=======
+    <PackageReference Include="UmbracoOutputCache" Version="14.1.0" />
+>>>>>>> c596d5225877637cfffce3e5792b6eac21b44fad
   </ItemGroup>
 
   <ItemGroup>
