@@ -24,8 +24,7 @@ else if (builder.Environment.IsProduction())
 }
 else if (builder.Environment.EnvironmentName.Equals("Local"))
 {
-	umbracoBuilder.SetServerRegistrar<SingleServerRoleAccessor>()
-        .AddSqliteCache();
+	umbracoBuilder.SetServerRegistrar<SingleServerRoleAccessor>();
 }
 else
 {
