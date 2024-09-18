@@ -4,17 +4,18 @@ EXPOSE 8080
 
 ENV ASPNETCORE_ENVIRONMENT=Subscriber
 ENV ASPNETCORE_URLS=http://+:8080
+ARG BUILD_CONFIGURATION=Release
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /CrossCloudLoadBalancing.Web
-COPY ["CrossCloudLoadBalancing.Web.csproj", "."]
+WORKDIR /src
+COPY ["CrossCloudLoadBalancing.Web/CrossCloudLoadBalancing.Web.csproj", "."]
 RUN dotnet restore "CrossCloudLoadBalancing.Web.csproj"
 COPY ./CrossCloudLoadBalancing.Web .
 WORKDIR "/CrossCloudLoadBalancing.Web/"
-RUN dotnet build "CrossCloudLoadBalancing.Web.csproj" -c Debug -o /app/build
+RUN dotnet build "CrossCloudLoadBalancing.Web.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "CrossCloudLoadBalancing.Web.csproj" -c Debug -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "CrossCloudLoadBalancing.Web.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
