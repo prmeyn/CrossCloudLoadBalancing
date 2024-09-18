@@ -7,7 +7,7 @@ ENV ASPNETCORE_URLS=http://+:80
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /CrossCloudLoadBalancing.Web
-COPY ["/CrossCloudLoadBalancing.Web.csproj", "./"]
+COPY ["CrossCloudLoadBalancing.Web.csproj", "."]
 RUN dotnet restore "CrossCloudLoadBalancing.Web.csproj"
 COPY ./CrossCloudLoadBalancing.Web .
 WORKDIR "/CrossCloudLoadBalancing.Web/"
