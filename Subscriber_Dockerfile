@@ -8,14 +8,14 @@ ARG BUILD_CONFIGURATION=Release
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["CrossCloudLoadBalancing.Web/CrossCloudLoadBalancing.Web.csproj", "."]
-RUN dotnet restore "CrossCloudLoadBalancing.Web.csproj"
-COPY ./CrossCloudLoadBalancing.Web .
-WORKDIR "/CrossCloudLoadBalancing.Web/"
-RUN dotnet build "CrossCloudLoadBalancing.Web.csproj" -c $BUILD_CONFIGURATION -o /app/build
+COPY ["CrossCloudLoadBalancing.Web/CrossCloudLoadBalancing.Web.csproj", "CrossCloudLoadBalancing.Web/"]
+RUN dotnet restore "CrossCloudLoadBalancing.Web/CrossCloudLoadBalancing.Web.csproj"
+COPY ./CrossCloudLoadBalancing.Web ./CrossCloudLoadBalancing.Web
+WORKDIR "/src/CrossCloudLoadBalancing.Web"
+RUN dotnet build "CrossCloudLoadBalancing.Web.csproj" -p:Configuration=$BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "CrossCloudLoadBalancing.Web.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "CrossCloudLoadBalancing.Web.csproj" -p:Configuration=$BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
